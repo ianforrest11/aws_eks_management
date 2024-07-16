@@ -29,5 +29,15 @@ data "aws_iam_role" "eks_production_role" {
 
 # Data block to get the EKS Node Group IAM role by name
 data "aws_iam_role" "eks_production_node_group_role" {
-  name = "EKS_Production_Node_Group_Role "
+  name = "EKS_Production_Node_Group_Role"
+}
+
+# Lookup the secret by name
+data "aws_secretsmanager_secret" "public_key" {
+  name = "prod_eks_ec2_ssh_key_public"
+}
+
+# Retrieve the public key from the secret
+data "aws_secretsmanager_secret_version" "public_key_version" {
+  secret_id = data.aws_secretsmanager_secret.public_key.id
 }

@@ -8,7 +8,7 @@ permissions:
   contents: read    # Required for actions/checkout
 
 jobs:
-  terraform-apply-security-group:
+  terraform-apply-eks-cluster:
     name: Apply Terraform eks_eks_management
     runs-on: ubuntu-latest
     steps:

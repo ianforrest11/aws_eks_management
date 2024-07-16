@@ -6,4 +6,4 @@ prod_max_size           = 2
 prod_min_size           = 1
 prod_name               = "prod_eks_cluster"
 prod_node_group_name    = "prod_eks_cluster_node_group"
-prod_version            = "1.29"
+prod_eks_version            = "1.29"
