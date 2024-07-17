@@ -15,7 +15,9 @@ module "eks_cluster_creation" {
   ]
   subnet_ids          = [
     data.aws_subnet.default_vpc_private_subnet_1.id,
-    data.aws_subnet.default_vpc_public_subnet_1.id
+    data.aws_subnet.default_vpc_private_subnet_2.id,
+    data.aws_subnet.default_vpc_public_subnet_1.id,
+    data.aws_subnet.default_vpc_public_subnet_2.id
   ]
   eks_version            = var.prod_eks_version
 }
