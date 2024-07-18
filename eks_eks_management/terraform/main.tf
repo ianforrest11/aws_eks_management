@@ -1,7 +1,7 @@
 module "eks_cluster_creation" {
   source              = "git@github.com:ianforrest11/terraform_templates.git//aws//eks_cluster?ref=main"
   desired_size        = var.prod_desired_size
-  ec2_ssh_key         = var.prod_ec2_ssh_key
+  ec2_ssh_key         = data.aws_key_pair.prod_eks_ec2_ssh_key.key_name
   environment         = var.prod_environment
   instance_types      = var.prod_instance_types
   max_size            = var.prod_max_size

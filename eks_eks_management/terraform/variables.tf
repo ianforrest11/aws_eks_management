@@ -1,5 +1,4 @@
 variable prod_desired_size {}
-variable prod_ec2_ssh_key {}
 variable prod_environment {}
 variable prod_instance_types {}
 variable prod_max_size {}
