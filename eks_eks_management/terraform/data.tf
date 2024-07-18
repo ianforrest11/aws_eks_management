@@ -38,6 +38,14 @@ data "aws_security_group" "prod_eks_security_group" {
   }
 }
 
+# Data block to get the prod eks security group id by name
+data "aws_security_group" "prod_eks_node_group_security_group" {
+  filter {
+    name   = "group-name"
+    values = ["prod_eks_node_group_security_group"]
+  }
+}
+
 # Data block to get the EKS IAM role by name
 data "aws_iam_role" "eks_production_role" {
   name = "EKS_Production_Role"
