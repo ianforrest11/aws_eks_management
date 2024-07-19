@@ -11,6 +11,7 @@ jobs:
   terraform-apply-eks-cluster:
     name: Apply Terraform eks_eks_management
     runs-on: ubuntu-latest
+    timeout-minutes: 30  # Timeout limit for the entire job
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -37,3 +38,5 @@ jobs:
           cd eks_eks_management/terraform
           terraform init
           terraform apply -auto-approve -var-file=../variables/prod.tfvars
+        timeout-minutes: 10  # Timeout limit for this step
+
