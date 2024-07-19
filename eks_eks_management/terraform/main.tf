@@ -15,9 +15,9 @@ module "eks_cluster_creation" {
   security_group_ids  = [
     data.aws_security_group.prod_eks_security_group.id
   ]
-  source_security_group_ids = [
-    data.aws_security_group.prod_eks_node_group_security_group.id
-  ]
+  # source_security_group_ids = [
+  #   data.aws_security_group.prod_eks_node_group_security_group.id
+  # ]
   subnet_ids          = [
     data.aws_subnet.default_vpc_public_subnet_1.id,
     data.aws_subnet.default_vpc_public_subnet_2.id,
