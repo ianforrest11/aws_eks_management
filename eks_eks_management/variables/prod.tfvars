@@ -1,5 +1,7 @@
 prod_desired_size                   = 1
 prod_environment                    = "production"
+prod_http_put_response_hop_limit    = 2
+prod_http_tokens                    = "required"
 prod_instance_types                 = ["t2.micro"]
 prod_max_size                       = 2
 prod_min_size                       = 1
