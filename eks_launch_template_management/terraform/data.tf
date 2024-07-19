@@ -60,21 +60,3 @@ data "aws_iam_role" "eks_production_node_group_role" {
 data "aws_key_pair" "prod_eks_ec2_ssh_key" {
   key_name = "prod_eks_ec2_ssh_key"
 }
-
-# look up latest ami for amazon linux 2
-data "aws_ami" "amazon_linux_2" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["amazon"]
-}
-

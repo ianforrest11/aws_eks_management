@@ -6,3 +6,4 @@ variable prod_min_size {}
 variable prod_name {}
 variable prod_node_group_name {}
 variable prod_eks_version {}
+variable prod_launch_template_resource_type {}
