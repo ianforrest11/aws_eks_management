@@ -1,2 +1,2 @@
 # Global variables
-eks_version = "1.29"
+eks_version = "1.30"
