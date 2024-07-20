@@ -19,3 +19,35 @@ data "terraform_remote_state" "eks_launch_templates" {
 data "aws_iam_role" "eks_production_node_group_role" {
   name = "EKS_Production_Node_Group_Role"
 }
+
+# data block to get private subnet id for use in creating other assets
+data "aws_subnet" "default_vpc_private_subnet_1" {
+  filter {
+    name   = "tag:Name"
+    values = ["default_vpc_private_subnet_1"]
+  }
+}
+
+# data block to get public subnet id for use in creating other assets
+data "aws_subnet" "default_vpc_public_subnet_1" {
+  filter {
+    name   = "tag:Name"
+    values = ["default_vpc_public_subnet_1"]
+  }
+}
+
+# data block to get private subnet id for use in creating other assets
+data "aws_subnet" "default_vpc_private_subnet_2" {
+  filter {
+    name   = "tag:Name"
+    values = ["default_vpc_private_subnet_2"]
+  }
+}
+
+# data block to get public subnet id for use in creating other assets
+data "aws_subnet" "default_vpc_public_subnet_2" {
+  filter {
+    name   = "tag:Name"
+    values = ["default_vpc_public_subnet_2"]
+  }
+}
