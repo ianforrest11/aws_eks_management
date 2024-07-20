@@ -9,7 +9,7 @@ terraform {
 
   backend "s3" {
     bucket         = "iforrest-aws-s3-terraform-state"
-    key            = "production/eks"
+    key            = "PLACEHOLDER_ENV/eks_managed_node_groups"
     region         = "us-east-1"
     dynamodb_table = "iforrest-aws-dynamodb-terraform-state"
     encrypt        = true
