@@ -35,14 +35,11 @@ jobs:
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Sts GetCallerIdentity
-        run: aws sts get-caller-identity
-
       - name: Destroy Terraform eks_launch_template_management
         run: |
           cd eks_launch_template_management/terraform
           terraform init
-          terraform destroy -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=global.tfvars
+          terraform destroy -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=../variables/global.tfvars
 
   terraform-destroy-eks-cluster:
     name: Destroy Terraform eks_cluster_management
@@ -72,14 +69,11 @@ jobs:
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Sts GetCallerIdentity
-        run: aws sts get-caller-identity
-
       - name: Destroy Terraform eks_cluster_management
         run: |
           cd eks_cluster_management/terraform
           terraform init
-          terraform destroy -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=global.tfvars
+          terraform destroy -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=../variables/global.tfvars
 
   terraform-destroy-eks-managed-node-group:
     name: Destroy Terraform eks_managed_node_group_management
@@ -109,11 +103,8 @@ jobs:
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Sts GetCallerIdentity
-        run: aws sts get-caller-identity
-
       - name: Destroy Terraform eks_managed_node_group_management
         run: |
           cd eks_managed_node_group_management/terraform
           terraform init
-          terraform destroy -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=global.tfvars
+          terraform destroy -auto-approve -var-file=${{ env.VAR_FILE }}

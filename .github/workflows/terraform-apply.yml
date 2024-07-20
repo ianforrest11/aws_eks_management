@@ -42,7 +42,7 @@ jobs:
         run: |
           cd eks_launch_template_management/terraform
           terraform init
-          terraform apply -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=global.tfvars
+          terraform apply -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=../variables/global.tfvars
 
   terraform-apply-eks-cluster:
     name: Apply Terraform eks_cluster_management
@@ -79,7 +79,7 @@ jobs:
         run: |
           cd eks_cluster_management/terraform
           terraform init
-          terraform apply -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=global.tfvars
+          terraform apply -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=../variables/global.tfvars
 
   terraform-apply-eks-managed-node-group:
     name: Apply Terraform eks_managed_node_group_management
@@ -116,4 +116,4 @@ jobs:
         run: |
           cd eks_managed_node_group_management/terraform
           terraform init
-          terraform apply -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=global.tfvars
+          terraform apply -auto-approve -var-file=${{ env.VAR_FILE }}

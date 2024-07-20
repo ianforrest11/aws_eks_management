@@ -37,15 +37,12 @@ jobs:
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Sts GetCallerIdentity
-        run: aws sts get-caller-identity
-
       - name: Init and Plan Terraform eks_launch_template_management
         run: |
           cd eks_launch_template_management/terraform
           terraform init
           terraform validate
-          terraform plan -var-file=${{ env.VAR_FILE }} -var-file=global.tfvars
+          terraform plan -var-file=${{ env.VAR_FILE }} -var-file=../variables/global.tfvars
 
   terraform-init-plan-eks-cluster:
     name: Init and Plan Terraform eks_cluster_management
@@ -75,15 +72,12 @@ jobs:
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Sts GetCallerIdentity
-        run: aws sts get-caller-identity
-
       - name: Init and Plan Terraform eks_cluster_management
         run: |
           cd eks_cluster_management/terraform
           terraform init
           terraform validate
-          terraform plan -var-file=${{ env.VAR_FILE }} -var-file=global.tfvars
+          terraform plan -var-file=${{ env.VAR_FILE }} -var-file=../variables/global.tfvars
 
   terraform-init-plan-eks-managed-node-group:
     name: Init and Plan Terraform eks_managed_node_group_management
@@ -113,12 +107,9 @@ jobs:
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Sts GetCallerIdentity
-        run: aws sts get-caller-identity
-
       - name: Init and Plan Terraform eks_managed_node_group_management
         run: |
           cd eks_managed_node_group_management/terraform
           terraform init
           terraform validate
-          terraform plan -var-file=${{ env.VAR_FILE }} -var-file=global.tfvars
+          terraform plan -var-file=${{ env.VAR_FILE }}
