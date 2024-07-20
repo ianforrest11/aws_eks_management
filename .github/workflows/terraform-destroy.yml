@@ -38,6 +38,7 @@ jobs:
       - name: Destroy Terraform eks_launch_template_management
         run: |
           cd eks_launch_template_management/terraform
+          sed -i "s/PLACEHOLDER_ENV/${{ env.ENVIRONMENT }}/g" provider.tf
           terraform init
           terraform destroy -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=../variables/global.tfvars
 
@@ -72,6 +73,7 @@ jobs:
       - name: Destroy Terraform eks_cluster_management
         run: |
           cd eks_cluster_management/terraform
+          sed -i "s/PLACEHOLDER_ENV/${{ env.ENVIRONMENT }}/g" provider.tf
           terraform init
           terraform destroy -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=../variables/global.tfvars
 
@@ -106,5 +108,6 @@ jobs:
       - name: Destroy Terraform eks_managed_node_group_management
         run: |
           cd eks_managed_node_group_management/terraform
+          sed -i "s/PLACEHOLDER_ENV/${{ env.ENVIRONMENT }}/g" provider.tf
           terraform init
           terraform destroy -auto-approve -var-file=${{ env.VAR_FILE }}
