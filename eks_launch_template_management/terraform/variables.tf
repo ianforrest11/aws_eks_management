@@ -1,5 +1,4 @@
 # Global Variables
-variable "ami_id" {}
 variable "resource_type" {}
 variable "http_tokens" {}
 variable "http_put_response_hop_limit" {}

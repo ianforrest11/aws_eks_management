@@ -14,8 +14,8 @@ jobs:
     name: Init and Plan Terraform eks_launch_template_management
     runs-on: ubuntu-latest
     env:
-      ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' || 'development' }}
-      VAR_FILE: ${{ github.ref_name == 'main' && '../variables/production.tfvars' || '../variables/development.tfvars' }}
+      ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' }}
+      VAR_FILE: ${{ github.ref_name == 'main' && '../variables/production.tfvars' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -49,8 +49,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: terraform-init-plan-eks-launch-template
     env:
-      ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' || 'development' }}
-      VAR_FILE: ${{ github.ref_name == 'main' && '../variables/production.tfvars' || '../variables/development.tfvars' }}
+      ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' }}
+      VAR_FILE: ${{ github.ref_name == 'main' && '../variables/production.tfvars' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -84,8 +84,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: terraform-init-plan-eks-cluster
     env:
-      ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' || 'development' }}
-      VAR_FILE: ${{ github.ref_name == 'main' && '../variables/production.tfvars' || '../variables/development.tfvars' }}
+      ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' }}
+      VAR_FILE: ${{ github.ref_name == 'main' && '../variables/production.tfvars' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
