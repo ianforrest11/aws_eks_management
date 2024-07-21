@@ -31,3 +31,8 @@ EOF
 output "cluster_endpoint" {
   value = module.eks_cluster_creation.cluster_endpoint
 }
+
+output "cluster_security_group_id" {
+  description = "The security group ID created by EKS for the cluster."
+  value       = module.eks_cluster_creation.cluster_security_group_id
+}
