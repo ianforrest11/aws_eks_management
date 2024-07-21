@@ -24,3 +24,14 @@ data "aws_ami" "amazon_linux_2" {
 data "aws_key_pair" "eks_ec2_ssh_key" {
   key_name = "${var.environment}_eks_ec2_ssh_key"
 }
+
+# get terraform state of eks cluster to retrieve outputs
+data "terraform_remote_state" "eks_cluster" {
+  backend = "s3"
+  config = {
+    bucket = "iforrest-aws-s3-terraform-state"
+    key    = "${var.environment}/eks_cluster"
+    region = "us-east-1"
+    dynamodb_table = "iforrest-aws-dynamodb-terraform-state"
+  }
+}

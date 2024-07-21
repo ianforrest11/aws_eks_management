@@ -7,7 +7,7 @@ module "eks_launch_template_creation" {
   http_put_response_hop_limit   = var.http_put_response_hop_limit
   node_security_groups          = [
     data.aws_security_group.eks_node_group_security_group.id,
-    module.eks_cluster_creation.cluster_security_group_id
+    data.terraform_remote_state.eks_cluster.outputs.cluster_security_group_id
   ]
   node_group_name               = var.node_group_name
   environment                   = var.environment
