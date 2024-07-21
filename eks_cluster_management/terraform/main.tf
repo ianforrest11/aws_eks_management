@@ -3,6 +3,8 @@ module "eks_cluster_creation" {
   name                        = var.name
   role_arn                    = data.aws_iam_role.eks_production_role.arn
   eks_version                 = var.eks_version
+  endpoint_private_access     = var.endpoint_private_access  
+  endpoint_public_access      = var.endpoint_public_access
   subnet_ids                  = [
     data.aws_subnet.default_vpc_public_subnet_1.id,
     data.aws_subnet.default_vpc_public_subnet_2.id,
