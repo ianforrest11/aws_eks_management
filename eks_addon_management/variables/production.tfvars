@@ -3,7 +3,7 @@ environment             = "production"
 
 # CoreDNS
 coredns_addon_name      = "coredns"
-coredns_addon_version   = "v1.11.1-eksbuild.9"
+coredns_addon_version   = "v1.11.1-eksbuild.8"
 
 # kube-proxy
 kubeproxy_addon_name    = "kube-proxy"
