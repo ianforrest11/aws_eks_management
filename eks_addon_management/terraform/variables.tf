@@ -1,9 +1,9 @@
 # set environment
 variable environment {}
 
-# CoreDNS
-variable coredns_addon_name {}
-variable coredns_addon_version {}
+# # CoreDNS
+# variable coredns_addon_name {}
+# variable coredns_addon_version {}
 
 # kube-proxy
 variable kubeproxy_addon_name {}
