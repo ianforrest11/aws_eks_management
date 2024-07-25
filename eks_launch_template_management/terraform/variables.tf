@@ -1,7 +1,9 @@
 # Global Variables
+variable "instance_metadata_tags" {}
 variable "resource_type" {}
 variable "http_tokens" {}
 variable "http_put_response_hop_limit" {}
+variable "http_endpoint" {}
 
 # set environment
 variable "environment" {}

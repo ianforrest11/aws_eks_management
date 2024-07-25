@@ -3,6 +3,8 @@ module "eks_launch_template_creation" {
   image_id                      = data.aws_ami.amazon_linux_2.id
   ec2_ssh_key                   = data.aws_key_pair.eks_ec2_ssh_key.key_name
   resource_type                 = var.resource_type
+  instance_metadata_tags        = var.instance_metadata_tags
+  http_endpoint                 = var.http_endpoint
   http_tokens                   = var.http_tokens
   http_put_response_hop_limit   = var.http_put_response_hop_limit
   node_security_groups          = [
