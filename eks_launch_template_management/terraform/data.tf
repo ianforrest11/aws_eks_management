@@ -36,12 +36,7 @@ data "terraform_remote_state" "eks_cluster" {
   }
 }
 
-# Data block to get the EKS Node Group IAM role by name
-data "aws_iam_role" "eks_production_node_group_role" {
-  name = "EKS_Production_Node_Group_Role"
-}
-
 # data blcok to get the iam instance profile from the eks node group iam role
 data "aws_iam_instance_profile" "eks_production_node_group_role_instance_profile" {
-  name = data.aws_iam_role.eks_production_node_group_role.name
+  name = "arn:aws:iam::128333337075:instance-profile/eks-54c8779b-6ee5-fd55-dbb6-42c276646b1f"
 }
