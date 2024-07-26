@@ -13,5 +13,6 @@ module "eks_launch_template_creation" {
     data.terraform_remote_state.eks_cluster.outputs.cluster_security_group_id
   ]
   node_group_name               = var.node_group_name
+  update_default_version        = var.update_default_version
   environment                   = var.environment
 }
