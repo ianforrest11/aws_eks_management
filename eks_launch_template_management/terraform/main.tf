@@ -7,7 +7,6 @@ module "eks_launch_template_creation" {
   http_endpoint                 = var.http_endpoint
   http_tokens                   = var.http_tokens
   http_put_response_hop_limit   = var.http_put_response_hop_limit
-  market_type                   = var.market_type
   node_security_groups          = [
     data.aws_security_group.eks_node_group_security_group.id,
     data.terraform_remote_state.eks_cluster.outputs.cluster_security_group_id
@@ -30,4 +29,5 @@ EOF
 ) 
   environment                   = var.environment
   k8s_cluster_dns_ip            = var.k8s_cluster_dns_ip
+  market_type                   = var.market_type
 }
