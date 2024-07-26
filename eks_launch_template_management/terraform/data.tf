@@ -38,5 +38,5 @@ data "terraform_remote_state" "eks_cluster" {
 
 # data blcok to get the iam instance profile from the eks node group iam role
 data "aws_iam_instance_profile" "eks_production_node_group_role_instance_profile" {
-  name = "arn:aws:iam::128333337075:instance-profile/eks-54c8779b-6ee5-fd55-dbb6-42c276646b1f"
+  name = "eks-54c8779b-6ee5-fd55-dbb6-42c276646b1f"
 }
