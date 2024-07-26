@@ -30,4 +30,5 @@ module "eks_launch_template_creation" {
 EOF
 ) 
   environment                   = var.environment
+  k8s_cluster_dns_ip            = var.k8s_cluster_dns_ip
 }
