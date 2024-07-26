@@ -6,19 +6,21 @@ data "aws_security_group" "eks_node_group_security_group" {
   }
 }
 
-# look up latest ami for amazon linux 2
-data "aws_ami" "amazon_linux_2" {
+# latest k8s worker ami
+data "aws_ami" "eks_kubernetes_worker" {
   most_recent = true
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+    values = ["amazon-eks-node-1.30-v*"]
   }
   filter {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-  owners = ["amazon"]
+  owners = ["602401143452"]  # Amazon's EKS AMI account ID
 }
+
+
 
 # Data source to retrieve the EC2 key pair by name
 data "aws_key_pair" "eks_ec2_ssh_key" {
