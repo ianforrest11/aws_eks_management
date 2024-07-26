@@ -1,3 +1,8 @@
+# pull cluster info
+data "aws_eks_cluster" "eks_cluster" {
+  name = "${var.environment}_eks_cluster"  # Replace with your EKS cluster name
+}
+
 # Data block to get the prod eks security group id by name
 data "aws_security_group" "eks_node_group_security_group" {
   filter {

@@ -10,4 +10,7 @@ variable "update_default_version" {}
 variable "environment" {}
 
 # environment-specific variables
+variable "node_group_max_size" {}
 variable "node_group_name" {}
+variable "k8s_cluster_dns_ip" {}
+variable "market_type" {}
