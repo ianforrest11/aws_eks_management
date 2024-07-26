@@ -21,8 +21,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Use reusable steps
-        id: reusable-steps
-        uses: ./.github/reusable-steps
+        uses: ./.github/actions/reusable-steps
 
       - name: Init and Plan Terraform eks_cluster_management
         run: |
