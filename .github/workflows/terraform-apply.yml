@@ -41,7 +41,6 @@ jobs:
           sed -i "s/PLACEHOLDER_ENV/${{ env.ENVIRONMENT }}/g" provider.tf
           terraform init
           terraform apply -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=../variables/global.tfvars
-          kubectl apply -f ../../cluster_management_files/aws-auth.yaml
 
 
   terraform-apply-eks-launch-template:
@@ -79,6 +78,7 @@ jobs:
           terraform init
           terraform apply -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=../variables/global.tfvars
 
+
   # terraform-apply-eks-managed-node-group:
   #   name: Apply Terraform eks_managed_node_group_management
   #   runs-on: ubuntu-latest
@@ -114,6 +114,7 @@ jobs:
   #         terraform init
   #         terraform apply -auto-approve -var-file=${{ env.VAR_FILE }}
 
+  
   terraform-apply-eks-addon-management:
     name: Apply Terraform eks_addon_management
     runs-on: ubuntu-latest
