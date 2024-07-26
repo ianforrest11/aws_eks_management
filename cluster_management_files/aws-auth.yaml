@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapRoles: |
+    - rolearn: arn:aws:iam::128333337075:role/GitHubActionRunner
+      username: githubactionrunner
+      groups:
+        - system:masters
+  mapUsers: |
+    - userarn: arn:aws:iam::128333337075:user/iforrest
+      username: iforrest
+      groups:
+        - system:masters

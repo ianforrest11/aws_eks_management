@@ -41,6 +41,8 @@ jobs:
           sed -i "s/PLACEHOLDER_ENV/${{ env.ENVIRONMENT }}/g" provider.tf
           terraform init
           terraform apply -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=../variables/global.tfvars
+          kubectl apply -f cluster_management_files/aws-auth.yaml
+
 
   terraform-apply-eks-launch-template:
     name: Apply Terraform eks_launch_template_management
