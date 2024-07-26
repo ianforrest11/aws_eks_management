@@ -3,6 +3,7 @@ module "eks_launch_template_creation" {
   image_id                      = data.aws_ami.eks_kubernetes_worker.id
   ec2_ssh_key                   = data.aws_key_pair.eks_ec2_ssh_key.key_name
   resource_type                 = var.resource_type
+  iam_instance_profile          = data.aws_iam_instance_profile.eks_production_node_group_role_instance_profile.name
   instance_metadata_tags        = var.instance_metadata_tags
   http_endpoint                 = var.http_endpoint
   http_tokens                   = var.http_tokens

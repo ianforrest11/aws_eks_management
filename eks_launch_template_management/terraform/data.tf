@@ -20,8 +20,6 @@ data "aws_ami" "eks_kubernetes_worker" {
   owners = ["602401143452"]  # Amazon's EKS AMI account ID
 }
 
-
-
 # Data source to retrieve the EC2 key pair by name
 data "aws_key_pair" "eks_ec2_ssh_key" {
   key_name = "${var.environment}_eks_ec2_ssh_key"
@@ -36,4 +34,14 @@ data "terraform_remote_state" "eks_cluster" {
     region = "us-east-1"
     dynamodb_table = "iforrest-aws-dynamodb-terraform-state"
   }
+}
+
+# Data block to get the EKS Node Group IAM role by name
+data "aws_iam_role" "eks_production_node_group_role" {
+  name = "EKS_Production_Node_Group_Role"
+}
+
+# data blcok to get the iam instance profile from the eks node group iam role
+data "aws_iam_instance_profile" "eks_production_node_group_role_instance_profile" {
+  name = data.aws_iam_role.eks_production_node_group_role.name
 }
