@@ -24,7 +24,7 @@ module "eks_launch_template_creation" {
       Content-Type: text/x-shellscript; charset="us-ascii"
       #!/bin/bash
       set -ex
-      /etc/eks/bootstrap.sh ${data.aws_eks_cluster.eks_cluster.name} --kubelet-extra-args '--node-labels=eks.amazonaws.com/nodegroup-image=${data.aws_ami.eks_kubernetes_worker.id},eks.amazonaws.com/capacityType=${upper(var.market_type)},eks.amazonaws.com/nodegroup=${var.node_group_name} --max-pods=${var.node_group_max_size}' --b64-cluster-ca ${data.aws_eks_cluster.eks_cluster.certificate_authority.data} --apiserver-endpoint ${data.aws_eks_cluster.eks_cluster.endpoint} --dns-cluster-ip ${var.k8s_cluster_dns_ip} --use-max-pods false
+      /etc/eks/bootstrap.sh ${data.aws_eks_cluster.eks_cluster.name} --kubelet-extra-args '--node-labels=eks.amazonaws.com/nodegroup-image=${data.aws_ami.eks_kubernetes_worker.id},eks.amazonaws.com/capacityType=${upper(var.market_type)},eks.amazonaws.com/nodegroup=${var.node_group_name} --max-pods=${var.node_group_max_size}' --b64-cluster-ca ${data.aws_eks_cluster.eks_cluster.certificate_authority[0].data} --apiserver-endpoint ${data.aws_eks_cluster.eks_cluster.endpoint} --dns-cluster-ip ${var.k8s_cluster_dns_ip} --use-max-pods false
 
       --//--
 EOF
