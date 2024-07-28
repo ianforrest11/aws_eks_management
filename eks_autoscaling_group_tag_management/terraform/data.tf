@@ -4,6 +4,6 @@ data "aws_eks_cluster" "production_eks_cluster" {
 }
 
 data "aws_eks_node_group" "production_eks_node_group" {
-  cluster_name = data.aws_eks_cluster.production.name
+  cluster_name = data.aws_eks_cluster.production_eks_cluster.name
   node_group_name = "production_eks_node_group"
 }
