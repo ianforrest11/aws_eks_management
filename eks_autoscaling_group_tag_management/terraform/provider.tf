@@ -9,7 +9,7 @@ terraform {
 
   backend "s3" {
     bucket         = "iforrest-aws-s3-terraform-state"
-    key            = "PLACEHOLDER_ENV/eks_cluster"
+    key            = "PLACEHOLDER_ENV/eks_autoscaling_group_tags"
     region         = "us-east-1"
     dynamodb_table = "iforrest-aws-dynamodb-terraform-state"
     encrypt        = true
