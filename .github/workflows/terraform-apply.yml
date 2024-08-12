@@ -42,41 +42,6 @@ jobs:
           terraform init
           terraform apply -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=../variables/global.tfvars
 
-  # terraform-apply-eks-launch-template:
-  #   name: Apply Terraform eks_launch_template_management
-  #   runs-on: ubuntu-latest
-  #   needs: terraform-apply-eks-cluster
-  #   env:
-  #     ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' }}
-  #     VAR_FILE: ${{ github.ref_name == 'main' && '../variables/production.tfvars' }}
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v2
-
-  #     - name: Configure SSH
-  #       env:
-  #         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-  #       run: |
-  #         mkdir -p ~/.ssh/
-  #         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-  #         chmod 600 ~/.ssh/id_rsa
-  #         ssh-keyscan github.com >> ~/.ssh/known_hosts
-  #         chmod 644 ~/.ssh/known_hosts
-      
-  #     - name: Configure AWS Credentials
-  #       uses: aws-actions/configure-aws-credentials@v1.7.0
-  #       with:
-  #         role-to-assume: ${{ secrets.RUNNER_ROLE_ARN }}
-  #         role-session-name: GitHub_to_AWS_via_FederatedOIDC
-  #         aws-region: ${{ secrets.AWS_REGION }}
-
-  #     - name: Apply Terraform eks_launch_template_management
-  #       run: |
-  #         cd eks_launch_template_management/terraform
-  #         sed -i "s/PLACEHOLDER_ENV/${{ env.ENVIRONMENT }}/g" provider.tf
-  #         terraform init
-  #         terraform apply -auto-approve -var-file=${{ env.VAR_FILE }} -var-file=../variables/global.tfvars
-
   terraform-apply-eks-addon-management:
     name: Apply Terraform eks_addon_management
     runs-on: ubuntu-latest
@@ -146,39 +111,3 @@ jobs:
           sed -i "s/PLACEHOLDER_ENV/${{ env.ENVIRONMENT }}/g" provider.tf
           terraform init
           terraform apply -auto-approve -var-file=${{ env.VAR_FILE }}
-
-  # terraform-apply-eks-autoscaling-group-tag:
-  #   name: Apply Terraform eks_autoscaling_group_tag_management
-  #   runs-on: ubuntu-latest
-  #   needs: terraform-apply-eks-managed-node-group
-  #   env:
-  #     ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' }}
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v2
-
-  #     - name: Configure SSH
-  #       env:
-  #         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-  #       run: |
-  #         mkdir -p ~/.ssh/
-  #         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-  #         chmod 600 ~/.ssh/id_rsa
-  #         ssh-keyscan github.com >> ~/.ssh/known_hosts
-  #         chmod 644 ~/.ssh/known_hosts
-      
-  #     - name: Configure AWS Credentials
-  #       uses: aws-actions/configure-aws-credentials@v1.7.0
-  #       with:
-  #         role-to-assume: ${{ secrets.RUNNER_ROLE_ARN }}
-  #         role-session-name: GitHub_to_AWS_via_FederatedOIDC
-  #         aws-region: ${{ secrets.AWS_REGION }}
-
-  #     - name: Apply eks_autoscaling_group_tag_management
-  #       run: |
-  #         cd eks_autoscaling_group_tag_management/terraform
-  #         sed -i "s/PLACEHOLDER_ENV/${{ env.ENVIRONMENT }}/g" provider.tf
-  #         terraform init
-  #         terraform apply -auto-approve
-
-
